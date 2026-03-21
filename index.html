@@ -830,7 +830,6 @@ footer{border-top:1px solid var(--line);display:flex;align-items:center;justify-
     <div class="sidx rv">07 / Social Work</div>
     <h2 class="sh rv d1" style="margin-bottom:52px">Community <em>Impact</em></h2>
     <div class="sw-grid">
-
       <div class="sw-img-wrap rv d1">
         <div class="sw-imgs-grid">
           <div class="sw-img">
@@ -929,12 +928,14 @@ footer{border-top:1px solid var(--line);display:flex;align-items:center;justify-
           <a href="tel:+919695808585" class="soci"><div><div class="socpl">Phone</div><div class="sochd">+91 96958 08585</div></div><div class="socarr">&#8599;</div></a>
         </div>
       </div>
+
+
       <div>
-        <form id="cform" onsubmit="sendMsg(event)">
-          <div class="ffield rv"><label class="flbl">Your name</label><input class="fin" type="text" placeholder="Gagan" required></div>
-          <div class="ffield rv d1"><label class="flbl">Email address</label><input class="fin" type="email" placeholder="gagan@example.com" required></div>
-          <div class="ffield rv d2"><label class="flbl">Message</label><textarea class="fta" rows="5" placeholder="Tell me about the opportunity..." required></textarea></div>
-          <button type="submit" class="fsub rv d3">Send Message</button>
+        <form id="cform" onsubmit="sendMsg(event)" action="https://formspree.io/f/xdawvzby" method="POST">
+            <div class="ffield rv"><label class="flbl">Your name</label><input class="fin" type="text" name="name" placeholder="Gagan" required></div>
+            <div class="ffield rv d1"><label class="flbl">Email address</label><input class="fin" type="email" name="email" placeholder="gagan@example.com" required></div>
+            <div class="ffield rv d2"><label class="flbl">Message</label><textarea class="fta" name="message" rows="5" placeholder="Tell me about the opportunity..." required></textarea></div>
+            <button type="submit" class="fsub rv d3">Send Message</button>
         </form>
         <div id="fok">Message received &mdash; Gagan will reply shortly.</div>
       </div>
@@ -1015,7 +1016,27 @@ function openMob(){document.getElementById('mob').classList.add('on');}
 function closeMob(){document.getElementById('mob').classList.remove('on');}
 
 // FORM
-function sendMsg(e){e.preventDefault();document.getElementById('cform').style.display='none';document.getElementById('fok').style.display='block';}
+async function sendMsg(e){
+  e.preventDefault();
+
+  const form = document.getElementById('cform');
+
+  try{
+    const res = await fetch("https://formspree.io/f/xdawvzby", {
+      method: "POST",
+      body: new FormData(form),
+      headers: { "Accept": "application/json" }
+    });
+
+    if(!res.ok) throw new Error("Request failed");
+
+    form.style.display = 'none';
+    document.getElementById('fok').style.display = 'block';
+    form.reset();
+  }catch(err){
+    alert("Message failed to send. Please try again.");
+  }
+}
 </script>
 </body>
 </html>
