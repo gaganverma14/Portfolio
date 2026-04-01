@@ -252,6 +252,95 @@ tr:hover .chip{border-color:var(--accent);color:var(--accent);}
 .cert-view-btn::after{content:'↗';font-size:.48rem;}
 .cert-view-btn:hover{color:var(--fg);border-color:var(--muted);}
 
+/* FEATURED CERT (CompTIA Security+) */
+.cert-featured{
+  border:1px solid var(--accent);border-radius:4px;
+  padding:40px 44px 40px 44px;margin-top:48px;margin-bottom:0;
+  display:grid;grid-template-columns:1fr 200px;gap:24px;align-items:center;
+  background:transparent;
+  transition:background .2s;
+}
+.cert-featured::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(200,184,154,.06) 0%,transparent 60%);
+  pointer-events:none;
+}
+
+.cert-featured:hover{
+  background:var(--card-bg);
+}
+
+.cf-badge{
+  font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent);
+  border:1px solid rgba(200,184,154,.4);border-radius:100px;
+  padding:4px 12px;display:inline-block;margin-bottom:14px;
+}
+.cf-yr{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.14em;color:var(--muted);margin-bottom:10px;}
+.cf-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.7rem,2.8vw,2.8rem);
+  font-weight:300;letter-spacing:-.02em;line-height:1.1;
+  margin-bottom:10px;
+}
+.cf-name em{font-style:italic;color:var(--accent);}
+.cf-sub{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.cf-desc{font-size:.86rem;color:var(--muted);font-weight:300;line-height:1.75;max-width:480px;margin-bottom:20px;}
+.cf-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:'DM Mono',monospace;font-size:.54rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);text-decoration:none;
+  border:1px solid rgba(200,184,154,.45);border-radius:3px;
+  padding:8px 16px;transition:all .2s;
+}
+.cf-btn::after{content:'↗';font-size:.48rem;}
+.cf-btn:hover{background:rgba(200,184,154,.12);border-color:var(--accent);}
+.cf-seal{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;flex-shrink:0;
+}
+.cf-seal img{
+  margin-left:-50px;
+}
+
+.cf-seal-ring{
+  width:96px;height:96px;border-radius:50%;
+  border:1.5px solid rgba(200,184,154,.4);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.cf-seal-ring::before{
+  content:'';position:absolute;inset:6px;border-radius:50%;
+  border:1px solid rgba(200,184,154,.2);
+}
+.cf-seal-text{
+  font-family:'DM Mono',monospace;font-size:.48rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);text-align:center;line-height:1.6;
+}
+.cf-global{
+  font-family:'DM Mono',monospace;font-size:.44rem;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);text-align:center;margin-top:6px;
+}
+
+/* ACHIEVEMENTS 3-col */
+.acg3{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-top:56px;}
+.acg3 .acc{padding:52px 44px;}
+.acg3 .acc:not(:last-child){border-right:1px solid var(--line);}
+.acg3 .acc:first-child{border-right:1px solid var(--line);}
+.ac-view-btn{
+  display:inline-flex;align-items:center;gap:4px;
+  font-family:'DM Mono',monospace;font-size:.52rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:3px;
+  padding:5px 10px;transition:all .2s;margin-top:16px;
+}
+.ac-view-btn::after{content:'↗';font-size:.48rem;}
+.ac-view-btn:hover{color:var(--fg);border-color:var(--muted);}
+
 /* ACHIEVEMENTS */
 .acg{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-top:56px;}
 .acc{padding:52px 44px;}
@@ -376,8 +465,13 @@ footer{border-top:1px solid var(--line);display:flex;align-items:center;justify-
   .cc:nth-child(2n){border-right:none;}
   .cc:nth-last-child(-n+3){border-bottom:1px solid var(--line);}
   .cc:last-child{border-bottom:none;}
+  .cert-featured{grid-template-columns:1fr;gap:20px;}
+  .cf-seal{align-items:flex-start;}
   .acg{grid-template-columns:1fr;}
   .acc:first-child{border-right:none;border-bottom:1px solid var(--line);}
+  .acg3{grid-template-columns:1fr;}
+  .acg3 .acc:not(:last-child){border-right:none;border-bottom:1px solid var(--line);}
+  .acg3 .acc:first-child{border-right:none;border-bottom:1px solid var(--line);}
   .edrow{grid-template-columns:1fr;}
   .edscore,.edslbl{text-align:left;}
   .ctg{grid-template-columns:1fr;gap:64px;}
@@ -479,7 +573,10 @@ footer{border-top:1px solid var(--line);display:flex;align-items:center;justify-
   </div>
   <div class="hfoot rv d3">
     <div class="hroles">
-      <div class="hrole">Cybersecurity Operator</div>
+      <div class="hrole">CompTIA Security+ Certified</div>
+      <div class="hrole">Network Security Engineer</div>
+      <div class="hrole">Forensic Engineer</div>
+      <!-- <div class="hrole">CompTIA Security+ Certified</div> -->
       <!-- <div class="hrole">AI Systems Engineer</div> -->
       <div class="hrole">Penetration Tester</div>
       <!-- <div class="hrole">Patent Holder</div> -->
@@ -512,9 +609,13 @@ footer{border-top:1px solid var(--line);display:flex;align-items:center;justify-
         <h2 class="sh rv d1">Who<br>I <em>Am</em></h2>
       </div>
       <div>
-        <p class="adesc rv d1">I’m a third-year <strong>Computer Science</strong> student at Lovely Professional University, focused on <strong>cybersecurity</strong> and <strong>applied AI</strong>.</p>
+        <!-- <p class="adesc rv d1">I’m a third-year <strong>Computer Science</strong> student at Lovely Professional University, focused on <strong>cybersecurity</strong> and <strong>applied AI</strong>.</p>
         <p class="adesc rv d2">I’ve built projects ranging from image-privacy tools that add subtle, training-resistant changes to images, to real-time medical assistant prototypes using Google Vertex AI.</p>
-        <p class="adesc rv d3">I also hold an approved Government of India patent for <strong>bacteria-based glowing roadside paint</strong>.</p>
+        <p class="adesc rv d3">I also hold an approved Government of India patent for <strong>bacteria-based glowing roadside paint</strong>.</p> -->
+        <p class="adesc rv d1">I’m a Computer Science student with a focused interest in <strong>cybersecurity</strong>, particularly in <strong>network security</strong>, <strong>penetration testing</strong>, and <strong>threat analysis</strong>. I recently earned my <strong>CompTIA Security+</strong> certification, strengthening both my theoretical understanding and hands-on experience with tools like <strong>Kali Linux</strong>, <strong>Wireshark</strong>, <strong>Nmap</strong>, and <strong>Metasploit</strong>.</p>
+        <p class="adesc rv d2">Alongside this, I’ve solved over <strong>350+ problems</strong> across platforms such as <strong>LeetCode</strong>, <strong>HackerRank</strong>, and <strong>GeeksforGeeks</strong>, maintaining a consistent <strong>200+ day streak</strong>. This has significantly improved my problem-solving ability and algorithmic thinking.</p>
+        <p class="adesc rv d3">I’ve also worked on projects including an <strong>AI-based Medical Assistant</strong> and an <strong>image privacy system</strong>. Additionally, I had the opportunity to present my research at an <strong>international conference</strong> and contribute to an <strong>approved patent</strong>, which strengthened my ability to build practical, real-world solutions.</p>
+        <p class="adesc rv d3">I’m continuously learning and evolving, with a strong focus on building systems that are not only efficient but also <strong>secure</strong> and <strong>reliable</strong></p>
         <div class="ibox rv d3">
           <div class="ib"><div class="ibk">Status</div><div class="ibv" style="color:#4ade80">● Available</div></div>
           <div class="ib"><div class="ibk">Location</div><div class="ibv">Punjab, India</div></div>
@@ -761,7 +862,22 @@ footer{border-top:1px solid var(--line);display:flex;align-items:center;justify-
   <div class="wrap">
     <div class="sidx rv">05 / Certificates</div>
     <h2 class="sh rv d1">Verified <em>Credentials</em></h2>
-    <div class="cg rv d2">
+    <!-- FEATURED: CompTIA Security+ -->
+    <div class="cert-featured rv d2">
+      <div>
+        <div class="cf-badge">Global Certification &middot; Industry Standard</div>
+        <div class="cf-yr">March 2026</div>
+        <div class="cf-name"><em>CompTIA Security+</em> SY0-701</div>
+        <div class="cf-sub">CompTIA</div>
+        <div class="cf-desc">A globally recognised, vendor-neutral certification validating baseline cybersecurity skills across threat management, cryptography, identity management, network security, and risk mitigation.</div>
+        <a href="https://drive.google.com/file/d/19Z3IUPgQScKH8V70_WpLJb5-o8URteDX/view?usp=sharing" target="_blank" class="cf-btn">View Certificate</a>
+      </div>
+      <div class="cf-seal">
+        <img src="comptia-security-ce-certification.png" alt="CompTIA Security+ Certified Badge" style="width:210px;height:210px;object-fit:contain;display:block;">
+      </div>
+    </div>
+
+    <div class="cg rv d2" style="margin-top:24px;">
       <div class="cc">
         <div class="cyr">November 2025</div>
         <div class="cnm">Cloud Computing</div>
@@ -807,7 +923,14 @@ footer{border-top:1px solid var(--line);display:flex;align-items:center;justify-
   <div class="wrap">
     <div class="sidx rv">06 / Achievements</div>
     <h2 class="sh rv d1" style="margin-bottom:52px"><em>Awards</em> &amp; Wins</h2>
-    <div class="acg rv d2">
+    <div class="acg3 rv d2">
+      <div class="acc">
+        <div class="acbig" style="font-size:clamp(1.6rem,3vw,3.2rem);line-height:1.05;margin-bottom:18px;">Research<br><em style="font-style:italic;color:var(--accent);">Paper</em></div>
+        <div class="actitle">International Conference Publication</div>
+        <div class="acsub">BEDAIML &middot; March 2026</div>
+        <div class="acdesc">Presented research on AI-based early disease prediction at BEDAIML — an international conference on Big Data, AI &amp; Machine Learning. Explored predictive modelling techniques for clinical early-warning systems.</div>
+        <a href="https://drive.google.com/file/d/1wcjDQUkMITNEdMgcmZgRmFwxMR3MTq7O/view?usp=sharing" target="_blank" class="ac-view-btn">View Certificate</a>
+      </div>
       <div class="acc">
         <div class="acbig">202511048378</div>
         <div class="actitle">Approved Patent</div>
@@ -820,6 +943,7 @@ footer{border-top:1px solid var(--line);display:flex;align-items:center;justify-
         <div class="acsub">Since July 2024</div>
         <div class="acdesc">Consistently solving algorithmic challenges on LeetCode, HackerRank, and GeeksforGeeks — sharpening DSA skills across data structures, dynamic programming, graphs, and system design.</div>
       </div>
+      
     </div>
   </div>
 </section>
@@ -950,7 +1074,7 @@ footer{border-top:1px solid var(--line);display:flex;align-items:center;justify-
   <a href="#hero" class="ftop">Back to top &uarr;</a>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // REVEAL
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});
